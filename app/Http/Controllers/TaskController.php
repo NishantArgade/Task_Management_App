@@ -49,7 +49,7 @@ class TaskController extends Controller
 
     // Delete user task
     public function deleteUserTask(Request $request)
-    {
+    {  
         // delete task by user_id and task_id
         $task_id =  $request->task_id;
         $user_id =  $request->user_id;
@@ -146,7 +146,7 @@ class TaskController extends Controller
     }
 
     // Remove the specified task from storage.
-    public function destroy(string $id, Request $request)
+    public function destroy(Request $request)
     {
         Task::find($request->task_id)->delete();
 

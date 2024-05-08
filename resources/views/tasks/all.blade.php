@@ -44,9 +44,8 @@
                     </svg>
                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this task?</h3>
                     <div class="flex items-center gap-x-2 justify-center">
-                        <form action="{{ route('task.destroy',0) }}" method="post">
+                        <form action="{{ route('task.destroy') }}" method="post">
                             @csrf
-                            @method('DELETE')
 
                             <input type="hidden" name="task_id" id="del_task_id" value="">
 

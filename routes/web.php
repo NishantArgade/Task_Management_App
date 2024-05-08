@@ -24,13 +24,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Routes for Authorized user and admin only
     Route::middleware('admin')->group(function () {
         Route::get('/task/all', [TaskController::class, 'allTasks'])->name('task.all');
-        Route::delete('/delete/user-task', [TaskController::class, 'deleteUserTask'])->name('delete.user-task');
+        Route::post('/delete/user-task', [TaskController::class, 'deleteUserTask'])->name('delete.user-task');
     });
 });
 
 
 Route::resource('task', TaskController::class)->only([
-    'index', 'create', 'store', 'edit', 'update', 'destroy'
+    'index', 'create', 'store', 'edit', 'update'
 ])->middleware(['auth', 'verified', 'admin']);
+
+Route::post('/task/destroy', [TaskController::class, 'destroy'])->name('task.destroy')->middleware(['auth', 'verified', 'admin']);
 
 require __DIR__ . '/auth.php';
