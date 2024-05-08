@@ -1,66 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Task Management App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a robust Task Management App built with Laravel. It allows the admin to create and manage tasks and assign them to users with ease. Additionally, users can view their tasks and change the status of tasks.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- User Authentication: Register and login functionality.
+- Admin Task Creation: Create tasks with a title, description, due date.
+- Task Assignment: Assign tasks to users.
+- Task Update: Update the details of the tasks.
+- Task Deletion: Delete tasks when they are no longer needed.
+- Task Search: Search for tasks based on their details.
+- Task Status Update: Update the status of tasks (e.g., In Progress, Completed).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation & Setup
 
-## Learning Laravel
+1. Clone the repository
+    ```bash
+    git clone https://github.com/NishantArgade/Task_Management_App.git
+    ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Change into the project directory
+    ```bash
+    cd Task_Management_App
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+3. Install dependencies
+    ```bash
+    composer install
+    ```
+3. Install npm dependencies and run build 
+    ```bash
+    npm install
+    npm run build
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. Copy the example env file and make the database configuration changes in the .env file 
+    ```bash
+    cp .env.example .env
+    ```
+for example:
+  ```bash
+...
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=YOUR_DB_NAME
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Laravel Sponsors
+Note: create a database (any name) in mysql server and assign their name in above configuration ex.DB_DATABASE=YOUR_DB_NAME
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. Generate a new application key
+    ```bash
+    php artisan key:generate
+    ```
 
-### Premium Partners
+## Database Migration & Seeding
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. Run the database migrations (Set the database connection in .env before migrating)
+    ```bash
+    php artisan migrate
+    ```
 
-## Contributing
+2. Seed the database with some test data
+    ```bash
+    php artisan db:seed
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Running the Project
 
-## Code of Conduct
+1. Start the local development server
+    ```bash
+    php artisan serve
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+You can now access the server at http://localhost:8000
 
-## Security Vulnerabilities
+## Testing
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Since the admin can only create a task and assign it to a user, first, log in as an admin. Then, you can see all tasks, create, edit, delete tasks, as well as assign a task to users.
 
-## License
+To see assigned tasks, log in as a user. Then, you can view the tasks assigned to logged-in users and also change the status of tasks accordingly.
+```bash
+# Admin Login Creadentials
+email: admin@gmail.com
+password: 12345678
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# User Login Creadentials
+email: user@gmail.com
+password: 12345678
+
+```
